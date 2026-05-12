@@ -1,0 +1,80 @@
+﻿FIELD #,FIELD NAME,TYPE,TABLE,MAX LENGTH,DECIMAL,FIELD DEFINITION
+ADDRESS CONNECT IDENTIFICATION,,,,,,
+1,ADDRESS_ID,AlphaNumeric,,10,,CoreLogic unique and persistent identification number assigned to each address.
+2,CLIP,AlphaNumeric,,10,,CoreLogic unique and persistent identification number assigned to each property.
+ADDRESS CONNECT INFORMATION,,,,,,
+3,FIPS_CODE,AlphaNumeric,,5,,Federal Information Processing Standards codes used nationally to numerically identify a specific county or political jurisdiction.
+4,FIPS_STATE_CODE,AlphaNumeric,,2,,Two-digit state code representing first two digits of FIPS code.
+ADDRESS CONNECT ADDRESS,,,,,,
+5,ADDRESS_QUALITY_SCORE,Numeric,,1,,CoreLogic calculated quality score indicating the confidence in the viability of the address.
+6,ADDRESSLINE_STREET_NUMBER,AlphaNumeric,,20,,The digits found to the left of a street name.
+7,ADDRESSLINE_STREET_NAME_PREFIX_DIRECTION,AlphaNumeric,,2,,"The part of the address that gives directional information for delivery, found as the first word in the street name and there is no other directional to the left of it. AKA Directional Abbreviations, Pre-Directional"
+8,ADDRESSLINE_STREET_NAME_FULL,AlphaNumeric,,80,,The complete address street (segment) name including suffix and (pre- or post-) directionals.
+9,ADDRESSLINE_STREET_NAME,AlphaNumeric,,60,,The address street (segment) name absent any suffix or directionals.
+10,ADDRESSLINE_NAME_SUFFIX,AlphaNumeric,,20,,The address street (segment) type found to the right of the street name. AKA Street Designators / Street Suffixes.
+11,ADDRESSLINE_NAME_SUFFIX_DIRECTION,AlphaNumeric,,2,,"The part of the address that gives directional information for delivery, found as the last word after the street name and suffix and there is no other directional to the right of it. AKA Directional Abbreviations, Post-Directional"
+12,ADDRESSLINE_UNIT_TYPE,AlphaNumeric,,20,,"The unit type of the address (e.g., Suite; Apt., #)."
+13,ADDRESSLINE_UNIT_NUMBER,AlphaNumeric,,20,,The unit or suite number of the address.
+14,ADDRESSLINE_CARRIER_ROUTE,AlphaNumeric,,4,,The four character code assigned to a group of addresses set by the USPS to aid in mail delivery.
+15,CITYLINE_CITY,AlphaNumeric,,50,,The preferred city name associated with the address.
+16,CITYLINE_STATE,AlphaNumeric,,2,,The state associated with the address.
+17,CITYLINE_ZIP,AlphaNumeric,,5,,The ZIP Code associated with the address
+18,CITYLINE_ZIP_PLUS,AlphaNumeric,,4,,The four digit addon to the ZIP code to indicate the sector and segment of the address.
+ADDRESS CONNECT USE,,,,,,
+19,LAND_USE_CODE,AlphaNumeric,LUSE,3,,A CoreLogic established Land Use code converted from various county Land Use codes to aid in search and extract functions.
+20,RES_BUS,AlphaNumeric,,12,,"Description related to the use of the specific record address. The values are: RESIDENTIAL, BUSINESS, INCONCLUSIVE."
+21,PREDOMINANT_RES_BUS,AlphaNumeric,,12,,"Description of the predominant use of the base address for an address. The values are: RESIDENTIAL, BUSINESS, INCONCLUSIVE."
+ADDRESS CONNECT POINT,,,,,,
+22,LOCATION_PRECISION,Numeric,,1,,"Corelogic standardized score for the accuracy and quality of a geocode or location. The score ranges from 0 to 10, where higher score represents more accurate and higher quality geocodes. For example, a valute of 10 represents that a geocode accuracy to the Front Door of the property. On the lower end value of 1 represents that the geocode accuracy is only to the city/state centroid (A value of 0 means no location could be determined). Possible values are:
+0 = None
+1 = City / State Centroid
+2 = ZipCode Centroid
+3 = Block
+4 = Street Centroid
+5 = Street Interpolated
+6 = Parcel
+7 = Parcel Unit
+8 = Structure
+9 = Structure Unit
+10 = Front Door"
+23,LOCATION_LATITUDE,Numeric,,10,6,ESPG:4326 coordinate for latitude in decimal degrees (in millionths of degrees).
+24,LOCATION_LONGITUDE,Numeric,,11,6,ESPG:4326 coordinate for longitude in decimal degrees (in millionths of degrees).
+ADDRESS CONNECT BASE ADDRESS,,,,,,
+25,BASE_ADDRESS_ID,Numeric,,10,,"ADDRESS_ID of the address record for the ""base address"", the related address without unit type and/or unit number."
+26,BASE_ADDRESS_CHILD_COUNT,Numeric,,5,,Number of addresses which include unit types and/or unit numbers which share the base address components with this address.
+ADDRESS CONNECT DELIVERY POINT,,,,,,
+27,DELIVERY_POINT_VERIFICATION_INDICATOR,AlphaNumeric,,1,,"USPS Delivery Point Validation code indicating the USPS' determination of whether an address is deliverable.
+Y = Address was DPV confirmed for both primary and (if present) secondary numbers.
+D = Address was DPV confirmed for the primary number only, and Secondary number information was missing.
+S = Address was DPV confirmed for the primary number only, and Secondary number information was present but unconfirmed.
+N = Both Primary and (if present) Secondary number information failed to DPV Confirm.
+Blank = Address not presented to hash table."
+28,DELIVERY_POINT_BARCODE,AlphaNumeric,,2,,"An amalgamated field consisting of the ZIP, the ZIP+4 and the two digit Delivery Point code unique to every US address."
+29,DELIVERY_POINT_CHECK_DIGIT,Numeric,,1,,A single digit used to verify the Delivery Point Barcode is accurate
+30,DELIVERY_POINT_OCCUPANCY,Numeric,,1,,"USPS code indicating the USPS' determination of whether the address is vacant or occupied. 
+Values: 
+0 = Populated 
+1 = Vacant"
+ADDRESS CONNECT POSTAL DESIGNATIONS,,,,,,
+31,URBANIZATION_NAME,AlphaNumeric,,40,,"An addressing element used in Puerto Rican addresses that denotes an area, sector, or development within a geographic area. If used, the urbanization line is placed above the delivery address line."
+32,RECORD_TYPE,AlphaNumeric,,1,,"USPS code indicating the type of adddress. Possible values are:
+F = FIRM
+G = General Delivery
+H = Building / Apartment
+P = Post Office Box
+R = Rural Route or Highway Contract
+S = Street"
+33,RESIDENTIAL_DELIVERY_INDICATOR,AlphaNumeric,,1,,"USPS indicator verifying whether a delivery type is classified as residential or business. Values are:
+R = Residential
+B = Business
+M = Mixed (both residential and business)"
+ADDRESS CONNECT DATES,,,,,,
+34,SOURCE_RECORD_DATE,AlphaNumeric,,15,,Date the address was first identified by CoreLogic. 
+35,RECORD_UPDATE_DATE,AlphaNumeric,,15,,Date the address record was most recently updated.
+36,USPS_REFRESH_DATE,AlphaNumeric,,15,,Date the address was last processed through USPS tools to update USPS-assigned attributes.
+ADDRESS CONNECT POINT GEOMETRY - GEOJSON,,,,,,
+37,LOCATION_GEOJSON,Text,,,,Geometry/Coordinates in GeoJSON format
+ADDRESS CONNECT POINT GEOMETRY - WKT,,,,,,
+37,LOCATION_WKT,Text,,,,Geometry/Coordinates in WKT (Well Known Text) format
+ACTION,,,,,,
+38,RECORD ACTION INDICATOR,AlphaNumeric,,1,,"A CoreLogic system generated indicator used to advise customers how to process records contained in delta files.  Values are: A = ADD, Customer will do an UPSERT, U = UPDATE, Customer will do an UPSERT, D = DELETE, Customer will do a DELETE, BLANK = No Action Required.  BLANK is used for Initial Delivery Files or Refresh Files."

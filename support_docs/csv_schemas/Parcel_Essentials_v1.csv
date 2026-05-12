@@ -1,0 +1,193 @@
+﻿FIELD #,FIELD NAME,TYPE,TABLE,MAX LENGTH,DECIMAL,FIELD DEFINITION
+PARCEL ESSENTIALS PARCEL IDENTIFICATION,,,,,,
+1,PARCEL SHAPE ID,AlphaNumeric,,10,,Cotality unique and persistent identification number assigned to each parcel polygon.
+PARCEL ESSENTIALS CLIP,,,,,,
+2,CLIP,AlphaNumeric,,10,,Unique identification number assigned to each property.
+PARCEL ESSENTIALS PARCEL INFORMATION,,,,,,
+3,STATE CODE,AlphaNumeric,,2,,Two-digit state code representing first two digits of the FIPS county code.
+4,COUNTY CODE,AlphaNumeric,,3,,Three-digit county code representing last three digits of the FIPS county code.
+5,ORIGINAL APN,AlphaNumeric,,50,,Original Assessors Parcel Number (APN) in raw format provided on the assessor tax roll.
+6,ALTERNATE APN,AlphaNumeric,,50,,An Alternate ID provided by some counties that can be used to identify a property.
+7,APN (PARCEL NUMBER UNFORMATTED),AlphaNumeric,,50,,Assessor's Parcel Number in an unformatted form. This is most often used by the county and others as a unique key.
+PARCEL ESSENTIALS OWNER,,,,,,
+8,OWNER 1 FULL NAME,AlphaNumeric,,50,,Full name of property owner - 1st occurrence.
+PARCEL ESSENTIALS PARCEL ADDRESS,,,,,,
+9,PARCEL ADDRESS,AlphaNumeric,,100,,Original Address.
+10,PARCEL CITY,AlphaNumeric,,50,,Original USPS city where parcel is located.
+11,PARCEL STATE,AlphaNumeric,,2,,Original USPS state where parcel is located.
+12,PARCEL ZIP,AlphaNumeric,,5,,USPS zip where parcel is located.
+13,SITUS STREET ADDRESS,AlphaNumeric,,100,,Standardized property address.
+14,SITUS CITY,AlphaNumeric,,50,,The city associated with the property address.
+15,SITUS STATE,AlphaNumeric,,2,,"The two-letter USPS postal abbreviation associated with the state / protectorates / commonwealth (e.g., CA, VI)."
+16,SITUS ZIP CODE,AlphaNumeric,,9,,"Code assigned by the USPS. This is populated by various source files and other proprietary and non-proprietary processes. Data may be the 5-digit zip or 9-digit Zip+4 (e.g., 00501 or 954630042)."
+OWNER MAILING v2,,,,,,
+17,MAILING HOUSE NUMBER,AlphaNumeric,,10,,"The digits found to the left of a street name, representing the house number for the mailing address."
+18,MAILING HOUSE NUMBER SUFFIX,AlphaNumeric,,10,,"The characters found to the immediate right of a house number (e.g., 202B Jones Rd)."
+19,MAILING HOUSE NUMBER 2,AlphaNumeric,,10,,The second set of numbers in an address range.
+20,MAILING DIRECTION,AlphaNumeric,,2,,"This field represents the direction found to the left of the street name (e.g., 9340 N Dunhill Dr). AKA Directional Abbreviations, Pre-Directional."
+21,MAILING STREET NAME,AlphaNumeric,,30,,The name or number of the street of the mailing address.
+22,MAILING MODE,AlphaNumeric,,5,,"The Mode or Type of street found to the right of the street name (e.g., 9340 N Dunhill Dr). AKA Street Designators / Street Suffixes."
+23,MAILING QUADRANT,AlphaNumeric,,2,,"The quadrant is found to the right of Mailing Mode (e.g., 2040 NW 100 ST SW). AKA Post-Directional."
+24,MAILING UNIT NUMBER,AlphaNumeric,,10,,"The unit or suite number of the mailing address (e.g., 649 Lake Shore Dr #1400)."
+25,MAILING CITY,AlphaNumeric,,40,,The city associated with the mailing address.
+26,MAILING STATE,AlphaNumeric,,2,,"The two-letter USPS postal abbreviation associated with the state / protectorates / commonwealth (e.g., CA, VI)."
+27,MAILING ZIP CODE,AlphaNumeric,,9,,"Code assigned by the USPS. This is populated by various source files and other proprietary and non-proprietary processes. Data may be the 5-digit zip or 9-digit Zip+4 (e.g., 00501 or 954630042)."
+28,MAILING CARRIER ROUTE,AlphaNumeric,,4,,This is the four digit code used by the local mail carrier to identify the delivery path.
+29,MAILING STREET ADDRESS,AlphaNumeric,,60,,Full mail address (not including City/St/Zip) (e.g. 123 N Main St).  This also contains unparsed foreign mailing address.
+30,OWNER CARE OF NAME,AlphaNumeric,,60,,CoreLogic standardized and parsed name for the person receiving mail on behalf of the owner. 
+31,MAILING OPT OUT INDICATOR,AlphaNumeric,,1,,"A ""Y"" represents a record where the property owner has contacted the DMA (i.e., Direct Marketing Association) and has asked not to be contacted by mail for solicitation."
+PARCEL ESSENTIALS CENTROID POINT,,,,,,
+32,PARCEL CENTROID LONGITUDE,Numeric,,24,6,ESPG:4326 coordinate for latitude in decimal degrees (in millionths of degrees) of either the centroid of the parcel shape geometry or a point that falls inside.
+33,PARCEL CENTROID LATITUDE,Numeric,,24,6,ESPG:4326 coordinate for longitude in decimal degrees (in millionths of degrees) of the parcel centroid.
+34,PARCEL CENTROID GEOHASH,AlphaNumeric,,25,,"Geohash encoding of the latitude and longitude coordinates, which are either the centroid of either the centroid of the parcel shape geometry or a point that falls inside."
+PARCEL ESSENTIALS POINT,,,,,,
+35,LOCATION LONGITUDE,Numeric,,24,6,ESPG:4326 coordinate for latitude in decimal degrees (in millionths of degrees) of a point within the parcel. May be different than the above parcel centroid.
+36,LOCATION LATITUDE,Numeric,,24,6,ESPG:4326 coordinate for longitude in decimal degrees (in millionths of degrees) of a point within the parcel. May be different than the above parcel centroid.
+37,LOCATION GEOHASH,AlphaNumeric,,25,,"Geohash encoding of the latitude and longitude coordinates, which are either the centroid of the parcel shape geometry or a point that falls inside. May be different than the above parcel centroid."
+PARCEL ESSENTIALS DATES,,,,,,
+38,SOURCE RECORD DATE,AlphaNumeric,,15,,Date the parcel shape was first identified by Cotality. 
+39,RECORD UPDATE DATE,AlphaNumeric,,15,,Date the parcel record was most recently updated.
+PARCEL ESSENTIALS GEOJSON,,,,,,
+40,METADATA ID GEOJSON,AlphaNumeric,,10,,Unique data set identifier used for linking records to their relevant metadata entry
+41,PARCEL GEOMETRY GEOJSON,Text,,,,Geometry/Coordinates in GeoJSON format
+PARCEL ESSENTIALS WKT,,,,,,
+42,METADATA ID WKT,AlphaNumeric,,10,,Unique data set identifier used for linking records to their relevant metadata entry
+43,PARCEL GEOMETRY WKT,Text,,,,Geometry/Coordinates in WKT (Well Known Text) format
+PARCEL ESSENTIALS PROPERTY ID V3,,,,,,
+44,CORELOGIC COUNTY CODE,AlphaNumeric,,5,,"A CoreLogic defined, persistent, 5-digit code that uniquely defines every county or county equivalent.  In some cases, the Corelogic County Code is based on FIPS code but may represent a prior version."
+45,APN SEQUENCE NUMBER,Numeric,,3,,This internal sequence number is used to ensure uniqueness of the Assessor's Parcel Number.
+46,COMPOSITE PROPERTY LINKAGE KEY,AlphaNumeric,,53,,"Unique property key, which can be used to link to other files associated with property (used in Legacy Product).   This is a fixed-width field, with the APN component padded with blanks out to 45 characters within the composite key."
+47,FIPS COUNTY CODE,AlphaNumeric,,5,,The current 5-digit Federal Information Processing Series codes used nationally that uniquely defines every county or county equivalent.
+48,TAX ACCOUNT NUMBER,AlphaNumeric,,60,,"The county or source number used primarily for billing. Note: this number is typically not unique to a parcel, but rather to a tax bill (multiple parcels can be combined on 1 bill)."
+49,ONLINE FORMATTED PARCEL ID,AlphaNumeric,,60,,APN that would link to CoreLogic online products.
+PARCEL ESSENTIALS LOCATION v3,,,,,,
+50,CENSUS ID,AlphaNumeric,,10,,"Comprised of Census Tract, Census Block Group, Census Block, and Census Block Suffix. These numbers are established by the US Department of Commerce (Bureau Of The Census)."
+51,RANGE,AlphaNumeric,,3,,"The ""range"" portion of geographical coordinates based on local surveys. Ranges typically run east or west of pre-determined ""meridian"" in six mile intervals."
+52,TOWNSHIP,AlphaNumeric,,3,,"The ""township"" portion of geographical coordinates based on local surveys. Townships typically run north or south of pre-determined ""meridian"" in six mile intervals."
+53,SECTION,AlphaNumeric,,3,,"The ""section"" portion of geographical coordinates based on local surveys. Sections are 1 square mile and there are 36 sections within the intersection of a Range / Township."
+54,QUARTER SECTION,AlphaNumeric,,3,,"A section that has been divided into four ""sub"" sections (e.g., NE, NW, SE, SW)."
+PARCEL ESSENTIALS PROPERTY v3,,,,,,
+55,LAND USE CODE,AlphaNumeric,LUSE,10,,A CoreLogic established Land Use code converted from various county Land Use codes to aid in search and extract functions.
+56,ZONING CODE,AlphaNumeric,,15,,The data contained in this field is based upon County and/or Local established Zoning Codes and is not converted by CoreLogic.
+57,PROPERTY INDICATOR CODE,AlphaNumeric,PRIND,3,,"A CoreLogic general code used to easily recognize specific property types (e.g., Single Family Residence, Condominium, Commercial)."
+58,MANUFACTURED HOME INDICATOR,AlphaNumeric,,1,,"This field is populated with a ""Y"" if a Manufactured Home is present on the parcel."
+59,NUMBER OF BUILDINGS,Numeric,,3,,Total number of buildings on the parcel.
+PARCEL ESSENTIALS PROPERTY (PREMIUM) v2,,,,,,
+60,LOCATION INFLUENCE CODE,AlphaNumeric,LOCIN,3,,"Positive or negative aspects associated with the location of the parcel (e.g., Waterfront, Flood Plain, Airport)."
+61,VIEW CODE,AlphaNumeric,VIEW,3,,"View from building (e.g., Gulf, Mountains, Pool)."
+PARCEL ESSENTIALS UTILITIES V2,,,,,,
+62,ELECTRICITY/WIRING TYPE CODE,AlphaNumeric,ELEC,3,,"Type of electricity and/or type of wiring within the building (e.g., Average Wiring, Underground Wired, Private Source)."
+63,FUEL TYPE CODE,AlphaNumeric,FUEL,3,,"Type of fuel used for heating of water and building (e.g., Solar, Gas, Oil)."
+64,SEWER TYPE CODE,AlphaNumeric,SEWER,3,,"Type of sewer system on the parcel (e.g., Public, Septic, Commercial)."
+65,WATER TYPE CODE,AlphaNumeric,WATER,3,,"Type of water service on the parcel (e.g., Public, Well, Cistern)."
+PARCEL ESSENTIALS PROPERTY LEGAL V2,,,,,,
+66,LEGAL BLOCK NUMBER,AlphaNumeric,,5,,"Identifies the county block number where the parcel is located. Part of a subdivision or tract legal description. Subdivisions are often broken down into blocks, which are then broken down into lots."
+67,LEGAL LOT NUMBER,AlphaNumeric,,5,,"Subdivision or County Map Lot Number. Part of a subdivision or tract legal description. Subdivisions are often broken down into blocks, which are then broken down into lots."
+68,SUBDIVISION TRACT NUMBER,AlphaNumeric,,10,,The unique number assigned to a specific subdivision by the county. Often this is used in lieu of an actual subdivision name.
+69,SUBDIVISION PLAT BOOK,AlphaNumeric,,10,,"The first component of a recording system used by some counties to catalog subdivision / condo plans (e.g., Book 123 Page 55A)."
+70,SUBDIVISION PLAT PAGE,AlphaNumeric,,10,,"The second component of a recording system used by some counties to catalog subdivision / condo plans (e.g., Book 123 Page 55A)."
+71,SUBDIVISION NAME,AlphaNumeric,,60,,"The name of the Subdivision or Condominium where the parcel is located (e.g., Highland Mills Estates, Crystal Towers Condo)."
+PARCEL ESSENTIALS LEGAL DESCRIPTION ,,,,,,
+72,LEGAL DESCRIPTION,AlphaNumeric,,750,,"County or local jurisdiction legal property descriptions. This description provides additional information regarding the property. It primarily delineates the exact boundaries of the property and may include other values like mineral rights, description of the layout of the property, etc."
+73,LEGAL1,AlphaNumeric,,250,,"County or local jurisdiction legal property descriptions. This description provides additional information regarding the property. It primarily delineates the exact boundaries of the property and may include other values like mineral rights, description of the layout of the property, etc."
+74,LEGAL2,AlphaNumeric,,250,,"County or local jurisdiction legal property descriptions. This description provides additional information regarding the property. It primarily delineates the exact boundaries of the property and may include other values like mineral rights, description of the layout of the property, etc."
+75,LEGAL3,AlphaNumeric,,250,,"County or local jurisdiction legal property descriptions. This description provides additional information regarding the property. It primarily delineates the exact boundaries of the property and may include other values like mineral rights, description of the layout of the property, etc."
+PARCEL ESSENTIALS TAX V3,,,,,,
+76,CALCULATED TOTAL VALUE,Numeric,,11,,"The ""TOTAL"" (i.e., Land + Improvement) Value closest to current market value used for assessment by county or local taxing authorities."
+77,CALCULATED LAND VALUE,Numeric,,11,,"The ""LAND"" Value closest to current market value used for assessment by county or local taxing authorities."
+78,CALCULATED IMPROVEMENT VALUE,Numeric,,11,,"The ""IMPROVEMENT"" Value closest to current market value used for assessment by county or local taxing authorities."
+79,CALCULATED TOTAL VALUE SOURCE CODE,AlphaNumeric,,1,,"The code appearing in this indicator field reflects the type of values used to seed the TOTAL VALUE CALCULATED field (i.e., A = Assessed, M = Market, P = Appraised, T = Transitional)."
+80,CALCULATED TOTAL LAND VALUE SOURCE CODE,AlphaNumeric,,1,,"The code appearing in this indicator field reflects the type of values used to seed the LAND VALUE CALCULATED field (i.e., A = Assessed, M = Market, P = Appraised, T = Transitional)."
+81,ASSESSED TOTAL VALUE,Numeric,,11,,The Total Assessed Value of the Parcel's Land & Improvement values as provided by the county or local taxing/assessment authority.
+82,ASSESSED LAND VALUE,Numeric,,11,,The Assessed Land Value as provided by the county or local taxing/assessment authority.
+83,ASSESSED IMPROVEMENT VALUE,Numeric,,11,,The Assessed Improvement Value as provided by the county or local taxing/assessment authority.
+84,MARKET TOTAL VALUE,Numeric,,11,,The Total Market Value of the Parcel's Land & Improvement values as provided by the county or local taxing/assessment authority.
+85,MARKET LAND VALUE,Numeric,,11,,The Market Land Value as provided by the county or local taxing/assessment authority.
+86,MARKET IMPROVEMENT VALUE,Numeric,,11,,The Market Improvement Value as provided by the county or local taxing/assessment authority.
+87,APPRAISED TOTAL VALUE,Numeric,,11,,The Total Appraised Value of the Parcel's Land & Improvement as provided by the county or local taxing/assessment authority.
+88,APPRAISED LAND VALUE,Numeric,,11,,The Appraised Land Value as provided by the county or local taxing/assessment authority.
+89,APPRAISED IMPROVEMENT VALUE,Numeric,,11,,The Appraised Improvement Value as provided by the county or local taxing/assessment authority.
+90,TOTAL TAX AMOUNT,Numeric,,14,2,Total property tax amount for the current tax year.
+91,NET TAX AMOUNT,Numeric,,13,2,Property tax amount less exemptions and/or credits.
+92,TAX YEAR,Numeric,,4,,The tax year for which the taxes were billed.
+93,ASSESSED YEAR,Numeric,,4,,The assessment year for which the taxes were billed.
+94,TAX AREA CODE,AlphaNumeric,,10,,Identifies the tax area code associated with the parcel.
+95,TOTAL PROPERTY TAX RATE PERCENT,Numeric,,7,3,County provided tax rate for the property based on Property Taxes billed through the county.
+96,TAXABLE IMPROVEMENT VALUE,Numeric,,9,,County provided value of the improvement applied to the parcel used in the calculation of the tax bill.
+97,TAXABLE LAND VALUE,Numeric,,9,,County provided land value of a parcel used in the calculation of the tax bill.
+98,TAXABLE OTHER VALUE,Numeric,,9,,"County provided value of fixture, features or miscellaneous values used in the calculation of the tax bill."
+99,NET TAXABLE VALUE,Numeric,,13,2,Assessed Value less exemptions or credits.
+PARCEL ESSENTIALS PROPERTY SIZE V3,,,,,,
+100,FRONT FOOTAGE,Numeric,,12,4,The linear feet across the front of the lot - facing the street.
+101,DEPTH FOOTAGE,Numeric,,12,4,The linear feet between the front and back of the lot.
+102,TOTAL NUMBER OF ACRES,Numeric,,14,4,CoreLogic derived or county provided value that indicates the total acreage of the parcel.
+103,TOTAL LAND SQUARE FOOTAGE,Numeric,,9,,Total land mass in square feet.
+104,LOT AREA DESCRIPTION,AlphaNumeric,,20,,"A textual description of the lot area, which may include size and unique attributes of the lot (e.g., irregular lot size)."
+PARCEL ESSENTIALS STRUCTURE SIZE V3,,,,,,
+105,UNIVERSAL BUILDING SQUARE FEET,Numeric,,9,,"The Building Square Footage that reflects the most accurate available for use in assessments or comparables (e.g., Living, Adjusted, Gross)."
+106,UNIVERSAL BUILDING SQUARE FEET SOURCE CODE,AlphaNumeric,,1,,"The codes appearing in this field indicates the source used to populate the UNIVERSAL BUILDING SQUARE FEET field.A=ADJUSTED, B=TOTAL, D=GROUND FLOOR, G=GROSS, L=LIVING, M=BASE/MAIN"
+107,BUILDING AREA SQUARE FEET,Numeric,,9,,The size of the building in square feet. This field is most commonly populated as an aggregate total when a county does not differentiate between living and non-living areas.
+108,TOTAL LIVING AREA SQUARE FEET - ALL BUILDINGS,Numeric,,10,2,"This is the area of all buildings that are used for general living. This is typically the area of all buildings that is heated or air conditioned and generally does not include Garage, Porch or Unfinished Basement Square Footage values."
+109,GROUND FLOOR AREA SQUARE FEET,Numeric,,10,2,Square footage of the part of the building which is level with the ground (typically the front of the building). This is generally above the basement(s) and below the second floor.
+110,BUILDING GROSS AREA SQUARE FEET,Numeric,,10,2,This is the square footage for the entire building. Typically this represents all square feet under the roof.
+111,BUILDING ADJUSTED AREA SQUARE FEET,Numeric,,10,2,"This is the square footage used by the county or local taxing / assessment authority to determine Improvement Value. This figure is typically 100% of the living area, plus lower percentage of non-living area."
+112,BASEMENT AREA SQUARE FEET,Numeric,,10,2,This is the total square footage associated with the Basement portion of a building. This would include both finished and unfinished areas.
+113,GARAGE OR PARKING SQUARE FEET,Numeric,,13,3,This is the total square footage of the primary garage or parking area.
+PARCEL ESSENTIALS STRUCTURE AGE,,,,,,
+114,YEAR BUILT,Numeric,,4,,This is the construction year of the original building on the parcel as provided by the county.  Not all counties maintain both Original and Effective Year Built. Null if not available from the source.  Format: YYYY
+115,EFFECTIVE YEAR BUILT,Numeric,,4,,"Typically this field reflects the first year the building was assessed with its current components (e.g., a building is originally constructed in 1960 and a bedroom and bath was added to the building in 1974. In this example, Year Built would be 1960 and the Effective Year Built would be 1974).   Certain counties only maintain one Year Built data element, and overlay Original Year Built with Effective Year Built if there was a structural change to the building that affected Assessed Value.  In these counties, Year Built will be null and Effective Year Built will contain the single data element provided by the source - examples include Fresno and San Diego counties.  Format: YYYY"
+PARCEL ESSENTIALS STRUCTURE ROOMS,,,,,,
+116,TOTAL NUMBER OF BEDROOMS - ALL BUILDINGS,Numeric,,5,,CoreLogic calculated total bedrooms for all the buildings on the property.
+117,TOTAL NUMBER OF ROOMS - ALL BUILDINGS,Numeric,,5,,Total number of rooms as supplied by the source.
+118,TOTAL NUMBER OF BATHROOMS - ALL BUILDINGS,Numeric,,3,,"Total number of rooms that are considered bathrooms across all buildings on the property.  For example, a half bathroom is considered one room.  "
+119,TOTAL NUMBER OF BATHROOMS,Numeric,,7,2,"Total number of rooms that are Bathrooms (Primary Building) if this is the method of establishing bathroom property characterized by the source.  Source values are whole numbers, although field allows for up to 2 decimal places in data deliveries."
+120,TOTAL NUMBER OF FULL BATHS - ALL BUILDINGS,Numeric,,5,,Total number of full bath rooms as supplied by source. If source does not break out full versus partial Baths -field will be null in this case.
+121,TOTAL NUMBER OF HALF BATHS - ALL BUILDINGS,Numeric,,5,,Total number of half bath rooms (typically comprised of a sink & toilet) as supplied by source. If source does not break out full versus partial Baths – field will be null in this case.
+122,TOTAL NUMBER OF 1QTR BATHS - ALL BUILDINGS,Numeric,,5,,"Total number of quarter bath rooms (typically comprised only of a sink, as found in many laundry rooms) as supplied by source. If source does not break out full versus partial Baths – field will be null in this case."
+123,TOTAL NUMBER OF 3QTR BATHS - ALL BUILDINGS,Numeric,,5,,"Total number of three-quarter bath rooms (typically comprised of a sink, toilet & shower stall) as supplied by source.  If source does not break out full versus partial Baths – field will be null in this case."
+124,TOTAL NUMBER OF BATH FIXTURES,Numeric,,5,,"The total number of bathroom fixtures - Primary Building (typically a full bath would have 4 fixtures - 1 = sink, 1 = toilet, 1 = bathtub, 1 = shower head)."
+125,TOTAL NUMBER OF BATH FIXTURES - ALL BUILDINGS,Numeric,,5,,"CoreLogic calculated total designated bath fixtures associated with all the bathrooms in all the buildings on the property. Examples: sink, toilet, shower stall, tub and faucets."
+PARCEL ESSENTIALS STRUCTURE INTERIOR,,,,,,
+126,BASEMENT FINISH TYPE CODE,AlphaNumeric,BSMTF,3,,The standardized code that identifies the basement's degree of completion.
+127,FIREPLACE INDICATOR,AlphaNumeric,,1,,"This field is populated with a ""Y"" if a fireplace is located within the building."
+128,TOTAL NUMBER OF FIREPLACES,Numeric,,3,,This represents the number of fireplace openings located within all buildings on the property.
+129,FIREPLACE TYPE CODE,AlphaNumeric,FIREP,3,,"The type of fireplace. If more than one fireplace, this field reflects the first/main building."
+130,FLOOR TYPE CODE,AlphaNumeric,FLRCO,3,,"The type of floor construction (e.g., Concrete, Plywood)."
+131,STORIES TYPE CODE,AlphaNumeric,STORY,3,,"Type / number of stories (e.g., Split Foyer, Tri Level, 2 Story)."
+132,TOTAL NUMBER OF STORIES,Numeric,,6,2,Number of stories associated with the building.
+PARCEL ESSENTIALS STRUCTURE EXTERIOR,,,,,,
+133,BUILDING TYPE CODE,AlphaNumeric,BLDG,3,,"The primary building type (e.g., Bowling Alley, Supermarket)."
+134,BUILDING IMPROVEMENT TYPE CODE,AlphaNumeric,IMPRV,3,,"The primary improvement type (e.g., Grain Silo, Hanger, Marina)."
+135,BUILDING IMPROVEMENT CONDITION CODE,AlphaNumeric,COND,3,,"This represents the physical condition of the main improvement (e.g., Good, Fair, Under Construction)."
+136,CONSTRUCTION TYPE CODE,AlphaNumeric,CNSTR,3,,"The primary method of construction (e.g., Steel / Glass, Concrete Block, Log)."
+137,EXTERIOR WALL TYPE CODE,AlphaNumeric,EXTNW,3,,"The type and/or finish of the exterior walls (e.g., Vinyl Siding, Brick Veneer, Frame / Stone)."
+138,FOUNDATION TYPE CODE,AlphaNumeric,FOUND,3,,"The type of foundation (e.g., Continuous Footing, Pier, Mud Sill)."
+139,FRAME TYPE CODE,AlphaNumeric,FRAME,3,,"The type of wall framing used (e.g., Bar Joist, Reinforced Concrete, Flexicore)."
+140,GARAGE TYPE CODE,AlphaNumeric,GRGCD,3,,"Type of garage or carport present (e.g., Attached Finished, Enclosed Carport, Basement Garage)."
+141,HEATING TYPE CODE,AlphaNumeric,HEAT,3,,"Type or method of heating (e.g., Hot Water, Heat Pump, Baseboard, Radiant)."
+142,TOTAL NUMBER OF PARKING SPACES,Numeric,,5,,This represents the total number of parking spaces or car capacity associated with the garage or parking type.
+143,PARKING TYPE CODE,AlphaNumeric,PARKG,3,,"Type of parking found on the parcel. This is typically commercial or communal in nature (e.g., Condos)."
+144,POOL INDICATOR,AlphaNumeric,,1,,"This field is populated with a ""Y"" if a Pool is present on the parcel."
+145,POOL TYPE CODE,AlphaNumeric,POOL,3,,"Type of pool, construction or pool amenities (e.g., Kidney, Gunite, Vinyl, Jacuzzi, Heated)."
+146,BUILDING QUALITY CODE,AlphaNumeric,QUAL,3,,"Type of construction quality of building (e.g., excellent, economical)."
+147,ROOF COVER TYPE CODE,AlphaNumeric,RFCO,3,,"Type of roof covering (e.g., Clay Tile, Aluminum, Shake)."
+148,ROOF TYPE CODE,AlphaNumeric,RFCO,3,,"Type of roof (e.g., Gambrel, Gable, Flat, Mansard)."
+149,BUILDING STYLE TYPE CODE,AlphaNumeric,STYLE,3,,"Type of building style (e.g., Colonial, Cape Code, Bungalow)."
+150,TOTAL NUMBER OF UNITS - ALL BUILDINGS,Numeric,,5,,"Number of residential, apartment or business units."
+PARCEL ESSENTIALS INTELLIGENCE,,,,,,
+151,RAILWAY PROXIMITY,Numeric,,1,,"A binary field indicating the parcel is near a major railway. Detailed metrics like shortest distance, intersection status, number of intersections are available in our Proximity Parcels product."
+152,ROADWAY PROXIMITY,Numeric,,1,,"A binary field indicating the parcel is near a major road. Detailed metrics like shortest distance, intersection status, number of intersections are available in our Proximity Parcels product."
+153,TRANSMISSION LINE PROXIMITY,Numeric,,1,,"A binary field indicating the parcel is near a transmission line. Detailed metrics like shortest distance, intersection status, number of intersections are available in our Proximity Parcels product."
+154,WETLAND PROXIMITY,Numeric,,1,,"A binary field indicating the parcel is near a wetland. Detailed metrics like shortest distance, intersection status, area overlap are available in our Proximity Parcels product."
+155,PROTECTED AREA PROXIMITY,Numeric,,1,,"A binary field indicating the parcel is near a protected area. Detailed metrics like shortest distance, intersection status, area overlap are available in our Proximity Parcels product."
+156,CROP TYPE 1,AlphaNumeric,,27,,"The most predominant crop type covering the parcel, as classified by the USDA Crop Land Data Layer. Detailed metrics for top 5 crop types and their percentages are available in our Parcel Terrain product. "
+157,FLOOD ZONE 1,AlphaNumeric,,17,,FEMA flood zone designation boundary covering largest portion of the parcel. Detailed metrics for top 5 flood zone types and their sub-types are available in our Parcel Terrain product. 
+158,CENSUS TRACT ID,AlphaNumeric,,6,,"2020 census tract, a small statistical subdivision of a county defined by the U.S. Census Bureau."
+159,CENSUS  BLOCKGROUP ID,AlphaNumeric,,1,,"2020 census block group, a cluster of census blocks within a tract that shares demographic characteristics."
+160,SCHOOL DISTRICT,AlphaNumeric,,69,,U.S. Census provided unified school district in which the center of the parcel is located
+161,ADDRESS COUNT,Numeric,,5,,Count of unique addresses associated with the property. Detailed address information is available within the Address Connect product
+162,PRIMARY BUSINESS USE INDICATOR,AlphaNumeric,,1,,"The Primary Business Use Indicator is a proprietary, rules-based attribute designed to distinguish between addresses that are dedicated business premises (e.g., retail storefronts, offices, manufacturing facilities) and those that are not primarily used for business (e.g., home-based businesses). Possible values are T/F for true and false. True represents the address is a dedicated business premises, and false indicates the address is not primarily used for business."
+163,COMPOSITE RISK SCORE,Numeric,,3,,"Composite risk value from 1 to 100, based on the combined average annual loss rates for multiple perils, relative to all residential properties nationwide.  The included perils are: earthquake, wildfire, inland flood, severe convective storms, winter storms, storm surge and hurricane wind.  A value of 1 indicates perils are modeled but there is no risk. A value of NULL indicates insufficient data to determine the perils for this property."
+164,EVENT RECORD DATE,AlphaNumeric,,10,,Date of the parcel lineage / change event.
+ACTION,,,,,,
+165,RECORD ACTION INDICATOR,AlphaNumeric,,1,,"A CoreLogic system generated indicator used to advise customers how to process records contained in delta files.  Values are: A = ADD, Customer will do an UPSERT, U = UPDATE, Customer will do an UPSERT, D = DELETE, Customer will do a DELETE, BLANK = No Action Required.  BLANK is used for Initial Delivery Files or Refresh Files."
