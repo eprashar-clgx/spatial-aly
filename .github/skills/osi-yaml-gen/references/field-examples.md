@@ -1,0 +1,214 @@
+# Field Annotation Examples
+
+Copy-paste YAML blocks for each column archetype. Replace `{PLACEHOLDER}` tokens.
+
+```yaml
+# datasets/text2sql/{TABLE_NAME}.yaml
+...
+
+# datasets/text2sql/{TABLE_NAME}.yaml
+# OSI v0.1.1 with COTALITY vendor extension
+# Source: {PROJECT}.{DATASET}.{TABLE_NAME} (~{ROW_ESTIMATE} rows)
+# Primary key: {PRIMARY_KEY}
+version: "0.1.1"
+
+semantic_model:
+  - name: {TABLE_NAME}
+    description: >
+      {TABLE_DESCRIPTION}
+    ai_context:
+      synonyms:
+        - "{SYNONYM_1}"
+        - "{SYNONYM_2}"
+      instructions: >
+        {USAGE_INSTRUCTIONS}
+
+        {SECTION_RULES_BLOCK}
+    custom_extensions:
+      - vendor_name: COTALITY
+        data: |
+          {
+            "tags": ["{TAG}"],
+            "row_estimate": {ROW_ESTIMATE},
+            "sample_questions": [
+              {
+                "id": 1,
+                "bucket": "{BUCKET_NAME}",
+                "q": "{NATURAL_LANGUAGE_QUESTION}",
+                "context": "{HINT_FOR_LLM}",
+                "sql": "{EXAMPLE_SQL}"
+              }
+            ]
+          }
+
+    datasets:
+      - name: {TABLE_NAME}
+        source: "{PROJECT}.{DATASET}.{TABLE_NAME}"
+        primary_key: [{PRIMARY_KEY}]
+
+        fields:
+          # --- Identity Columns ---
+
+          - name: {id_column}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {id_column}
+            description: "{DESCRIPTION}"
+            ai_context:
+              synonyms:
+                - "{SYNONYM}"
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: '{"data_type": "STRING", "is_id": true}'
+
+          # --- Geographic Identifiers ---
+
+          - name: {geo_filter_column}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {geo_filter_column}
+            description: "{DESCRIPTION}"
+            ai_context:
+              synonyms:
+                - "{SYNONYM}"
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: '{"data_type": "STRING", "filterable": true, "sample_values": ["{VAL1}", "{VAL2}"]}'
+
+          # --- Coded Columns (low cardinality) ---
+
+          - name: {coded_column_low}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {coded_column_low}
+            description: "{DESCRIPTION}"
+            ai_context:
+              synonyms:
+                - "{SYNONYM}"
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: |
+                  {
+                    "data_type": "STRING",
+                    "filterable": true,
+                    "value_groups": {
+                      "{group_name}": {"description": "{MEANING}", "codes": ["{CODE1}", "{CODE2}"]},
+                      "{group_name_2}": {"description": "{MEANING}", "codes": ["{CODE3}", "{CODE4}"]}
+                    }
+                  }
+
+          # --- Coded Columns (high cardinality) ---
+
+          - name: {coded_column_high}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {coded_column_high}
+            description: "{DESCRIPTION}"
+            ai_context:
+              synonyms:
+                - "{SYNONYM}"
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: |
+                  {
+                    "data_type": "STRING",
+                    "high_cardinality": true,
+                    "has_lookup": true,
+                    "related_description_column": "{DESC_COLUMN}",
+                    "value_groups": {
+                      "{group_name}": {"description": "{MEANING}", "sample_codes": ["{CODE1}", "{CODE2}", "{CODE3}"]}
+                    }
+                  }
+
+          # --- Metric Columns ---
+
+          - name: {metric_column}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {metric_column}
+            description: "{DESCRIPTION}"
+            ai_context:
+              synonyms:
+                - "{SYNONYM}"
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: '{"data_type": "FLOAT64", "is_metric": true, "unit": "{UNIT}"}'
+
+          # --- Geometry Columns ---
+
+          # Option A: Native BQ GEOGRAPHY
+          - name: {geography_column}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {geography_column}
+            description: "{DESCRIPTION}. Include in SELECT for map visualization."
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: '{"data_type": "GEOGRAPHY", "geo_role": "geometry", "srid": 4326, "encoding": "native"}'
+
+          # Option B: Lat/Lon pair
+          - name: {latitude_column}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {latitude_column}
+            description: "EPSG:4326 latitude in decimal degrees"
+            ai_context:
+              synonyms:
+                - "latitude"
+                - "lat"
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: '{"data_type": "FLOAT64", "geo_role": "lat_lon_pair", "paired_with": "{longitude_column}", "srid": 4326}'
+
+          # Option C: WKT/WKB string
+          - name: {wkt_column}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {wkt_column}
+            description: "Geometry in {WKT|WKB} format. Cast with ST_GEOGFROM{TEXT|WKB}() for spatial ops."
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: '{"data_type": "STRING", "geo_role": "geometry", "srid": 4326, "encoding": "{wkt|wkb}"}'
+
+          # --- Boolean Flags ---
+
+          - name: {flag_column}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {flag_column}
+            description: "{DESCRIPTION}"
+            ai_context:
+              synonyms:
+                - "{SYNONYM}"
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: |
+                  {
+                    "data_type": "INT64",
+                    "is_flag": true,
+                    "value_groups": {
+                      "{yes_meaning}": {"description": "{DESC}", "codes": ["1"]},
+                      "{no_meaning}": {"description": "{DESC}", "codes": ["0"]}
+                    }
+                  }
+
+          # --- Internal/ETL (usually omitted entirely) ---
+
+          - name: {internal_column}
+            expression:
+              dialects:
+                - dialect: ANSI_SQL
+                  expression: {internal_column}
+            description: "{DESCRIPTION}"
+            custom_extensions:
+              - vendor_name: COTALITY
+                data: '{"data_type": "TIMESTAMP", "internal": true}'
